@@ -1,4 +1,4 @@
-function getCancerScreen(age) {  // call only when they are NOT diagnosed
+function getProbability(age) {  // call only when they are NOT diagnosed
   let answer = []
   if (20 <= age && age < 30) {
     answer.push("0.1% (1 in 1439)");
@@ -27,7 +27,7 @@ function getCancerScreen(age) {  // call only when they are NOT diagnosed
   return answer;
 }
 
-function getProbability() {
+function getCancerScreen() {
 
 }
 
