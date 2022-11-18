@@ -84,21 +84,21 @@ function checkAge(age) {
 }
 
 function checkEthnicity(ethnicity) {
-
+  return true;
 }
 
 function checkDiagnosed(diagnosed) {
-
+  return true;
 }
 
 function printDiagnosedSummary(answer) {
   console.log('Following is the summary of characteristics of invasive female breat cancer by your ethnicity: ');
   console.log('SEER Summary stage - Local: '+answer[0][0]
               +', Regional: '+answer[0][1]+', Distant: '+answer[0][2]
-              +', Unknow: '+answer[0][3]);
+              +', Unknown: '+answer[0][3]);
   console.log('Tumor size (cm) - <2.0: '+answer[1][0]
               +', 2.0-4.9: ', answer[1][1]
-              +', >=5: ', answer[1][2]+', Unknow: '+answer[1][3]);
+              +', >=5: ', answer[1][2]+', Unknown: '+answer[1][3]);
 }
 
 const readline = require("readline-sync");
@@ -129,3 +129,5 @@ while (true) {
     console.log("Please put Y or N");
   }
 }
+answer = getDiagnosedSummary(ethnicity);
+printDiagnosedSummary(answer);
