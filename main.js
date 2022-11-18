@@ -1,4 +1,7 @@
-function getProbability(age) {  // call only when they are NOT diagnosed
+// Suchi: recommendation methods, getProbability according to ethnicity, print functions for Not diagnosed
+// Chris: getCancerScreen method, summary, print for diagosed
+
+function getProbabilityAge(age) {  // call only when they are NOT diagnosed
   let answer = []
   if (20 <= age && age < 30) {
     answer.push("0.1% (1 in 1439)");
