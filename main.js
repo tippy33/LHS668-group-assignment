@@ -31,9 +31,51 @@ function getCancerScreen() {
 
 }
 
-function getDiagnosedSummary() {
-
-}
+function getDiagnosedSummary(ethnicity) {
+  let answer = [];
+  let stage = [];
+  let tumorSize = [];
+  let grade = [];
+  let erStatus = [];
+  let subtype = [];
+  if (ethnicity=="White") {
+    stage = [68, 24, 5, 3];
+    tumorSize = [58, 30, 7, 6];
+    grade = [23, 43, 26, 8];
+    erStatus = [82, 14, 4];
+    subtype = [71, 9, 4, 9, 7];
+  } else if (ethnicity=="Black") {
+    stage = [57, 31, 8, 3];
+    tumorSize = [46, 34, 12, 7];
+    grade = [13, 36, 41, 9];
+    erStatus = [69, 27, 5];
+    subtype = [57, 10, 5, 19, 8];
+  } else if (ethnicity=="Hispanic") {
+    stage = [60, 31, 6, 4];
+    tumorSize= [48, 34, 10, 9];
+    grade= [17, 40, 34, 10];
+    erStatus = [76, 18, 6];
+    subtype = [63, 11, 5, 11];
+  } else if (ethnicity=="Asian Pacific Islander") {
+    stage = [65, 27, 5, 2];
+    tumorSize=[51, 34, 9, 5];
+    grade = [18, 43, 31, 7];
+    erStatus = [80, 16, 4];
+    subtype = [66, 12, 6, 9, 7];
+  } else if (ethnicity=="American Indian Alaska Native") {
+    stage = [60, 29, 7, 4];
+    tumorSize = [48, 34, 9, 9];
+    grade = [22, 40, 29, 9];
+    erStatus = [77, 17, 5];
+    subtype = [66, 10, 5, 11, 9];
+  }
+  answer.push(stage);
+  answer.push(tumorSize);
+  answer.push(grade);
+  answer.push(erStatus);
+  answer.push(subtype);
+  return answer;
+} 
 
 function checkAge(age) {
   if (Number.isInteger(age) && (age > 19)) {
@@ -47,6 +89,16 @@ function checkEthnicity(ethnicity) {
 
 function checkDiagnosed(diagnosed) {
 
+}
+
+function printDiagnosedSummary(answer) {
+  console.log('Following is the summary of characteristics of invasive female breat cancer by your ethnicity: ');
+  console.log('SEER Summary stage - Local: '+answer[0][0]
+              +', Regional: '+answer[0][1]+', Distant: '+answer[0][2]
+              +', Unknow: '+answer[0][3]);
+  console.log('Tumor size (cm) - <2.0: '+answer[1][0]
+              +', 2.0-4.9: ', answer[1][1]
+              +', >=5: ', answer[1][2]+', Unknow: '+answer[1][3]);
 }
 
 const readline = require("readline-sync");
