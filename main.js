@@ -102,6 +102,14 @@ function printDiagnosedSummary(answer) {
   console.log('Tumor size (cm) - <2.0: '+answer[1][0]
               +', 2.0-4.9: ', answer[1][1]
               +', >=5: ', answer[1][2]+', Unknown: '+answer[1][3]);
+  console.log('Grade - Low: '+answer[2][0]
+              +', Intermediate: '+answer[2][1]
+              +', High: '+answer[2][2] +', Unknown: '+answer[2][3]);
+  console.log('ER status - Positive: '+answer[3][0]
+              +', Negative: '+answer[3][1]+', Unknown: '+answer[3][2]);
+  console.log('Subtype - HR+/HER2-: '+answer[4][0]
+              +', HR+/HER2+: '+answer[4][1]+', HR-/HER2+: '+answer[4][2]
+              +', HR-/HER2-: '+answer[4][3]+', Unknown: '+answer[4][4]);  
 }
 
 const readline = require("readline-sync");
