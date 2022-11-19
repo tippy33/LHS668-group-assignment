@@ -41,31 +41,31 @@ function getDiagnosedSummary(ethnicity) {
   let grade = [];
   let erStatus = [];
   let subtype = [];
-  if (ethnicity=="White") {
+  if (ethnicity.toLowerCase().includes("White".toLowerCase())) {
     stage = [68, 24, 5, 3];
     tumorSize = [58, 30, 7, 6];
     grade = [23, 43, 26, 8];
     erStatus = [82, 14, 4];
     subtype = [71, 9, 4, 9, 7];
-  } else if (ethnicity=="Black") {
+  } else if (ethnicity.toLowerCase().includes("Black".toLowerCase())) {
     stage = [57, 31, 8, 3];
     tumorSize = [46, 34, 12, 7];
     grade = [13, 36, 41, 9];
     erStatus = [69, 27, 5];
     subtype = [57, 10, 5, 19, 8];
-  } else if (ethnicity=="Hispanic") {
+  } else if (ethnicity.toLowerCase().includes("Hispanic".toLowerCase())) {
     stage = [60, 31, 6, 4];
     tumorSize= [48, 34, 10, 9];
     grade= [17, 40, 34, 10];
     erStatus = [76, 18, 6];
     subtype = [63, 11, 5, 11];
-  } else if (ethnicity=="Asian Pacific Islander") {
+  } else if (ethnicity.toLowerCase().includes("Asian Pacific Islander".toLowerCase())) {
     stage = [65, 27, 5, 2];
     tumorSize=[51, 34, 9, 5];
     grade = [18, 43, 31, 7];
     erStatus = [80, 16, 4];
     subtype = [66, 12, 6, 9, 7];
-  } else if (ethnicity=="American Indian Alaska Native") {
+  } else if (ethnicity.toLowerCase().includes("American Indian Alaska Native".toLowerCase())) {
     stage = [60, 29, 7, 4];
     tumorSize = [48, 34, 9, 9];
     grade = [22, 40, 29, 9];
@@ -118,10 +118,11 @@ function printDiagnosedSummary(answer) {
 }
 
 function main(age, ethnicity, diagnosed) {
-  if (diagnosed=="Y") {
+  if (diagnosed.toLowerCase().includes("Y".toLowerCase())) {
     ageProb = getProbabilityAge(age);
   } else {  // when the patinet is not diagnosed
     diagSum = getDiagnosedSummary(ethnicity);
+    console.log(diagSum);
     printDiagnosedSummary(diagSum);
   }
 }
