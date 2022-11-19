@@ -30,8 +30,22 @@ function getProbabilityAge(age) {  // call only when they are NOT diagnosed
   return answer;
 }
 
-function getCancerScreen() {
-
+function getCancerScreen(age) {
+  console.log("Following is recommended cancer screening frequency according to your age.");
+  if (age < 45) {
+    console.log("Women should undergo regular screening mammography starting at age 45 years.");
+    console.log("Women should have the opportunity to begin annual screening between ages 40 and 44 years.");
+  } else if (45<= age && age <=49) {
+    console.log("The decision to start screening with mammography in women prior to age 50 years should be an individual one.");
+    console.log("Women who place a higher value on the potential benefit than the potential harms may coose to begin screening once every two years between the ages of 40 and 49 years.");
+  } else if (50<= age && age<=74) {
+    console.log("Screening with mammorgraphy once every two years is recommended.");
+    console.log("The evidence is insufficient to assess the additional benefits and harms of clinical examination.");
+  } else if (75<=age) {
+    console.log("Cuurent evidence is insufficient to assess the balance of benefits and harms of screening mammography in women aged 75 years or older.");
+  }
+  console.log("-----------------------------------------------------");
+  return;
 }
 
 function getDiagnosedSummary(ethnicity) {
@@ -122,8 +136,9 @@ function main(age, ethnicity, diagnosed) {
     ageProb = getProbabilityAge(age);
   } else {  // when the patinet is not diagnosed
     diagSum = getDiagnosedSummary(ethnicity);
-    console.log(diagSum);
+    // console.log(diagSum);
     printDiagnosedSummary(diagSum);
+    getCancerScreen(age);
   }
 }
 
