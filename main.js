@@ -31,7 +31,7 @@ function getProbabilityAge(age) {  // call only when they are NOT diagnosed
 }
 
 function getCancerScreen(age) {
-  console.log("Following is recommended cancer screening frequency according to your age.");
+  console.log("*** Following is recommended cancer screening frequency according to your age.");
   if (age < 45) {
     console.log("Women should undergo regular screening mammography starting at age 45 years.");
     console.log("Women should have the opportunity to begin annual screening between ages 40 and 44 years.");
