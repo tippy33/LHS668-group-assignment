@@ -99,13 +99,31 @@ function checkDiagnosed(diagnosed) {
 }
 
 function printDiagnosedSummary(answer) {
-  console.log('Following is the summary of characteristics of invasive female breat cancer by your ethnicity: ');
+  console.log('*** Following is the summary of characteristics of invasive female breast cancer by your ethnicity: ');
   console.log('SEER Summary stage - Local: '+answer[0][0]
               +', Regional: '+answer[0][1]+', Distant: '+answer[0][2]
               +', Unknown: '+answer[0][3]);
   console.log('Tumor size (cm) - <2.0: '+answer[1][0]
               +', 2.0-4.9: ', answer[1][1]
               +', >=5: ', answer[1][2]+', Unknown: '+answer[1][3]);
+  console.log('Grade - Low: '+answer[2][0]
+              +', Intermediate: '+answer[2][1]
+              +', High: '+answer[2][2] +', Unknown: '+answer[2][3]);
+  console.log('ER status - Positive: '+answer[3][0]
+              +', Negative: '+answer[3][1]+', Unknown: '+answer[3][2]);
+  console.log('Subtype - HR+/HER2-: '+answer[4][0]
+              +', HR+/HER2+: '+answer[4][1]+', HR-/HER2+: '+answer[4][2]
+              +', HR-/HER2-: '+answer[4][3]+', Unknown: '+answer[4][4]);
+  console.log('-----------------------------------------------------');  
+}
+
+function main(age, ethnicity, diagnosed) {
+  if (diagnosed=="Y") {
+    ageProb = getProbabilityAge(age);
+  } else {  // when the patinet is not diagnosed
+    diagSum = getDiagnosedSummary(ethnicity);
+    printDiagnosedSummary(diagSum);
+  }
 }
 
 const readline = require("readline-sync");
@@ -136,5 +154,4 @@ while (true) {
     console.log("Please put Y or N");
   }
 }
-answer = getDiagnosedSummary(ethnicity);
-printDiagnosedSummary(answer);
+main(age, ethnicity, diagnosed); // call main function
