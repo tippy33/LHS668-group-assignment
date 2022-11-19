@@ -87,11 +87,15 @@ function checkAge(age) {
 }
 
 function checkEthnicity(ethnicity) {
-  return true;
+  if ("White/Black/Hispanic/Asian Pacific Islander/American Indian Alaska Native".toLowerCase().includes(ethnicity.toLowerCase())) {
+    return true;
+  } return false;
 }
 
 function checkDiagnosed(diagnosed) {
-  return true;
+  if ("Y/N".toLowerCase().includes(diagnosed.toLowerCase())) {
+    return true;
+  } return false;
 }
 
 function printDiagnosedSummary(answer) {
