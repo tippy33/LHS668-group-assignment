@@ -1,54 +1,168 @@
-// Suchi: recommendation methods, getProbability according to ethnicity, print functions for Not diagnosed
-// Chris: getCancerScreen method, summary, print for diagosed
-
 function getProbabilityAge(age) {  // call only when they are NOT diagnosed
   let answer = []
   if (20 <= age && age < 30) {
-    answer.push("0.1% (1 in 1439)");
-    answer.push("<0.1% (1 in 18,029)");
+    answer.push("Breast Cancer Incidence is 0.1% | 1 in 1439");
+    answer.push("Breast Cancer Mortality upon incidence is less than 0.1% | 1 in 18,029");
   } else if (30 <= age && age < 40) {
-    answer.push("0.5% (1 in 204)");
-    answer.push("<0.1% (1 in 2945)");
+    answer.push("Breast Cancer Incidence is 0.5% | 1 in 204");
+    answer.push("Breast Cancer Mortality upon incidence is less than 0.1% | 1 in 2945");
   } else if (40 <= age && age < 50) {
-    answer.push("1.6% (1 in 63)");
-    answer.push("0.1% (1 in 674)");
+    answer.push("Breast Cancer Incidence is 1.6% | 1 in 63");
+    answer.push("Breast Cancer Mortality upon incidence is less than 0.1% | 1 in 674");
   } else if (50 <= age && age < 60) {
-    answer.push("2.4% (1 in 41)");
-    answer.push("0.3% (1 in 324)");
+    answer.push("Breast Cancer Incidence is 2.4% | 1 in 41");
+    answer.push("Breast Cancer Mortality upon incidence is less than 0.3% | 1 in 324");
   } else if (60 <= age && age < 70) {
-    answer.push("3.5% (1 in 28)");
-    answer.push("0.5% (1 in 203)");
+    answer.push("Breast Cancer Incidence is 3.5% | 1 in 28");
+    answer.push("Breast Cancer Mortality upon incidence is less than 0.5% | 1 in 203");
   } else if (70 <= age && age < 80) {
-    answer.push("4.1% (1 in 24)");
-    answer.push("0.7% (1 in 137)");
+    answer.push("Breast Cancer Incidence is 4.1% | 1 in 24");
+    answer.push("Breast Cancer Mortality upon incidence is less than 0.7% | 1 in 137");
   } else {
-    answer.push("3.0% (1 in 33)");
-    answer.push("1.0%(1 in 100)");
+    answer.push("Breast Cancer Incidence is 3.0% | 1 in 33");
+    answer.push("Breast Cancer Mortality upon incidence is less than 1.0% | 1 in 100");
   }
-  answer.push("12.9% (1 in 8)");  // lifetime risk
-  answer.push("2.5% (1 in 39)");
   return answer;
 }
 
-function getCancerScreen(age) {  // TODO: change into Recommendation
-  console.log("*** Following is recommended cancer screening frequency according to your age.");
-  if (age < 45) {
-    console.log("Women should undergo regular screening mammography starting at age 45 years.");
-    console.log("Women should have the opportunity to begin annual screening between ages 40 and 44 years.");
-  } else if (45<= age && age <=49) {
-    console.log("The decision to start screening with mammography in women prior to age 50 years should be an individual one.");
-    console.log("Women who place a higher value on the potential benefit than the potential harms may coose to begin screening once every two years between the ages of 40 and 49 years.");
-  } else if (50<= age && age<=74) {
-    console.log("Screening with mammorgraphy once every two years is recommended.");
-    console.log("The evidence is insufficient to assess the additional benefits and harms of clinical examination.");
-  } else if (75<=age) {
-    console.log("Cuurent evidence is insufficient to assess the balance of benefits and harms of screening mammography in women aged 75 years or older.");
+function getRecommendations(age, p_status, highrisk) {
+  console.log("For an average woman your age, the probability for :");
+  console.log(getProbabilityAge(age));
+  console.log("Following are the Recommendations to prevent Breast Cancer, given your age");
+  if (age >= 20 && age < 30)
+  {
+    if (highrisk == "Y" || highrisk == "y"){
+      console.log("Since you have a strong family history of breast cancer or you are at high risk according to your clinician , a mammogram and MRI, with possible medication to prevent breast cancer, should be part of your annual health assessment starting at age 25.");
+      console.log("--Note that your average risk for break cancer as mentioned in the top - is doubled with your history/risk");
+    }
+    else {
+      console.log("Research shows that early detection of Breast Cancer means a greater probability of surviving, hence, it is a good idea to make tri-annual breast exams a part of your health-habits early on.");
+    }
+
+    if (p_status == "Y" || p_status == "y") {
+      console.log("Breast-feeding your children for at least 6 months can cut your risk of low-grade, slow-growing breast cancer by 20% and up to 50% for triple-negative disease.");
+    }
+    console.log("Know your breasts. If you familiarize yourself with what is normal for your breasts, you may be able to catch any normalities before they become a real problem. If you detect something unusual or strange, contact your medical provider as soon as possible.");
+    console.log("Keep alcohol consumption to one drink per day.");
+    console.log("Exercise regularly, at least 3 to 4 hours every week.");
+    console.log("Eat a healthy diet, decreasing or eliminating high-calorie, low-nutrition “junk food” like sugary drinks and highly refined breads. Keep your red meat consumption to 4oz. per day and eat lots of colorful fruits and vegetables.");
   }
-  console.log("-----------------------------------------------------");
+  if (age >= 30 && age < 40)
+  {
+    if (highrisk == "Y" || highrisk == "y"){
+      console.log("Since you have a strong family history of breast cancer or you are at high risk according to your clinician , a mammogram and MRI, with possible medication to prevent breast cancer, should be part of your annual health assessment starting now");
+      console.log("-- Note that your average risk for break cancer as mentioned in the top - is doubled with your history/risk");
+    }
+    else {
+      console.log("Research shows that early detection of Breast Cancer means a greater probability of surviving, hence, it is a good idea to make tri-annual breast exams a part of your health-habits early on.");
+    }
+
+    if (p_status == "Y" || p_status == "y") {
+      console.log("Breast-feeding your children for at least 6 months can cut your risk of low-grade, slow-growing breast cancer by 20% and up to 50% for triple-negative disease.");
+    }
+    console.log("Exposure to several stressful life events before the age of thirty, like divorce or death of parents, may increase your risk of breast cancer. Experiencing more than one negative meaningful life event has been shown as a risk factor for breast cancer among young women. Hence, take care of your mental health, manage your stress and get help when you need it. ");
+    console.log("Know your breasts. If you familiarize yourself with what is normal for your breasts, you may be able to catch any normalities before they become a real problem. If you detect something unusual or strange, contact your medical provider as soon as possible.");
+    console.log("Keep alcohol consumption to one drink per day.");
+    console.log("Exercise regularly, at least 3 to 4 hours every week.");
+    console.log("Eat a healthy diet, decreasing or eliminating high-calorie, low-nutrition “junk food” like sugary drinks and highly refined breads. Keep your red meat consumption to 4oz. per day and eat lots of colorful fruits and vegetables.");
+  }
+  if (age >= 40 && age < 50)
+  {
+    if (highrisk == "Y" || highrisk == "y"){
+    console.log("Since you have a strong family history of breast cancer or you are at high risk according to your clinician, a mammogram and an MRI, with possible medication to prevent breast cancer, should be part of your annual health assessment starting now");
+    console.log("Consider chemoprevention if you are at high risk. While the average woman should not take a drug to reduce the risk of breast cancer, you should consider them if you are a woman who's had a biopsy that shows an increased risk for development of cancer.");
+    console.log("-- Note that your average risk for break cancer as mentioned in the top - is doubled with your history/risk");
+    }
+    else {
+      console.log("It is recommended that you schedule an annual mammogram along with your daily self-exam of your breasts and clinical exam.");
+      console.log("The decision to start screening for breast cancer with mammography should be your individual one. If you place a higher value on the potential harm than the potential benefit may choose to begin screening once every two years.");
+    }
+
+    if (p_status == "Y" || p_status == "y") {
+      console.log("Breast-feeding your children for at least 6 months can cut your risk of low-grade, slow-growing breast cancer by 20% and up to 50% for triple-negative disease.");
+    }
+    console.log("Exposure to several stressful life events, like divorce or death of parents, may increase your risk of breast cancer. Experiencing more than one negative meaningful life event has been shown as a risk factor for breast cancer among young women. Hence, take care of your mental health, manage your stress and get help when you need it. ");
+    console.log("Know your breasts. If you familiarize yourself with what is normal for your breasts, you may be able to catch any normalities before they become a real problem. If you detect something unusual or strange, contact your medical provider as soon as possible.");
+    console.log("Keep alcohol consumption to one drink per day.");
+    console.log("Exercise regularly, at least 3 to 4 hours every week.");
+    console.log("Eat a healthy diet, decreasing or eliminating high-calorie, low-nutrition “junk food” like sugary drinks and highly refined breads. Keep your red meat consumption to 4oz. per day and eat lots of colorful fruits and vegetables.");
+  }
+  if (age >= 50 && age<60)
+  {
+    if (highrisk == "Y" || highrisk == "y"){
+    console.log("Since you have a strong family history of breast cancer or you are at high risk according to your clinician, a mammogram and an MRI, with possible medication to prevent breast cancer, should be part of your annual health assessment starting now");
+    console.log("Consider chemoprevention if you are at high risk. While the average woman should not take a drug to reduce the risk of breast cancer, you should consider them if you are a woman who's had a biopsy that shows an increased risk for development of cancer.");
+    console.log("-- Note that your average risk for break cancer as mentioned in the top - is doubled with your history/risk");
+    }
+    else {
+      console.log("It is recommended that you schedule an annual mammogram along with your daily self-exam of your breasts and clinical exam.");
+      console.log("The decision to start screening for breast cancer with mammography should be your individual one. If you place a higher value on the potential harm than the potential benefit may choose to begin screening once every two years.");
+    }
+
+    if (p_status == "Y" || p_status == "y") {
+      console.log("Breast-feeding your children for at least 6 months can cut your risk of low-grade, slow-growing breast cancer by 20% and up to 50% for triple-negative disease.");
+    }
+    console.log("Exposure to several stressful life events, like divorce or death of parents, may increase your risk of breast cancer. Experiencing more than one negative meaningful life event has been shown as a risk factor for breast cancer among young women. Hence, take care of your mental health, manage your stress and get help when you need it. ");
+    console.log("Know your breasts. If you familiarize yourself with what is normal for your breasts, you may be able to catch any normalities before they become a real problem. If you detect something unusual or strange, contact your medical provider as soon as possible.");
+    console.log("Keep alcohol consumption to one drink per day.");
+    console.log("Exercise regularly, at least 3 to 4 hours every week.");
+    console.log("Find your BMI - a rate of 25% or lower is what you should shoot for. Women who are overweight or obese increase their risk of getting breast cancer and lower their likelihood of surviving if they do get it.");
+    console.log("Eat a healthy diet, decreasing or eliminating high-calorie, low-nutrition “junk food” like sugary drinks and highly refined breads. Keep your red meat consumption to 4oz. per day and eat lots of colorful fruits and vegetables.");
+    console.log("Avoid or at least limit hormonal replacement therapy. “Hormone replacement therapy, also known as postmenopausal hormone therapy (PHT), increases your breast cancer risk.")
+    console.log("Get enough Vitamin D. Vitamin D (1,000 IUs/day) is beneficial, convenient, and cost-effective for helping to prevent breast cancer. Ask your doctor to check your Vitamin D level and recommend the proper supplementation, if needed.");
+    
+  }
+  if (age >= 60)
+  {
+    if (highrisk == "Y" || highrisk == "y"){
+    console.log("Since you have a strong family history of breast cancer or you are at high risk according to your clinician, a mammogram and an MRI, with possible medication to prevent breast cancer, should be part of your annual health assessment starting now");
+    console.log("Consider 3D mammograms for a clearer picture of your breast health, particularly because you have a family history of breast cancer or you're at high risk.")
+    console.log("Consider chemoprevention if you are at high risk. While the average woman should not take a drug to reduce the risk of breast cancer, you should consider them if you are a woman who's had a biopsy that shows an increased risk for development of cancer.");
+    console.log("-- Note that your average risk for break cancer as mentioned in the top - is doubled with your history/risk");
+    }
+    else {
+      console.log("It is highly recommended that you schedule an annual mammogram along with your daily self-exam of your breasts and clinical exam.");
+      console.log("The decision to start screening for breast cancer with mammography should be your individual one. If you place a higher value on the potential harm than the potential benefit may choose to begin screening once every two years.");
+    }
+
+    if (p_status == "Y" || p_status == "y") {
+      console.log("Breast-feeding your children for at least 6 months can cut your risk of low-grade, slow-growing breast cancer by 20% and up to 50% for triple-negative disease.");
+    }
+    console.log("Exposure to several stressful life events before the age of twenty, like divorce or death of parents, may increase your risk of breast cancer. Experiencing more than one negative meaningful life event has been shown as a risk factor for breast cancer among young women. Hence, take care of your mental health, manage your stress and get help when you need it. ");
+    console.log("Know your breasts. If you familiarize yourself with what is normal for your breasts, you may be able to catch any normalities before they become a real problem. If you detect something unusual or strange, contact your medical provider as soon as possible.");
+    console.log("Keep alcohol consumption to one drink per day.");
+    console.log("Exercise regularly, at least 3 to 4 hours every week.");
+    console.log("Find your BMI - a rate of 25% or lower is what you should shoot for. Women who are overweight or obese increase their risk of getting breast cancer and lower their likelihood of surviving if they do get it.");
+    console.log("Eat a healthy diet, decreasing or eliminating high-calorie, low-nutrition “junk food” like sugary drinks and highly refined breads. Keep your red meat consumption to 4oz. per day and eat lots of colorful fruits and vegetables.");
+    console.log("Avoid or at least limit hormonal replacement therapy. “Hormone replacement therapy, also known as postmenopausal hormone therapy (PHT), increases your breast cancer risk.");
+    console.log("Get enough Vitamin D. Vitamin D (1,000 IUs/day) is beneficial, convenient, and cost-effective for helping to prevent breast cancer. Ask your doctor to check your Vitamin D level and recommend the proper supplementation, if needed.");
+  }
+  console.log("Follow these recommendations and you will be a step ahead in better taking care of your physical and mental health while also reducing your chances of being diagnosed with breast cancer.");
   return;
 }
 
-function getDiagnosedSummary(ethnicity) {  // Only for those who are diagnosed
+function getProbforeth(ethnicity) {
+  let answer = [];
+  if (ethnicity.toLowerCase().includes("White".toLowerCase())) {
+    answer.push("0.13% ");
+    answer.push("0.02% (1 in )");
+  } else if (ethnicity.toLowerCase().includes("Black".toLowerCase())) {
+    answer.push("0.126% (1 in )");
+    answer.push("0.028% (1 in )");
+  } else if (ethnicity.toLowerCase().includes("Hispanic".toLowerCase())) {
+    answer.push("0.093% (1 in )");
+    answer.push("0.014% (1 in )");
+  } else if (ethnicity.toLowerCase().includes("Asian Pacific Islander".toLowerCase())) {
+    answer.push("0.093% (1 in )");
+    answer.push("0.011% (1 in )");
+  } else if (ethnicity.toLowerCase().includes("American Indian Alaska Native".toLowerCase())) {
+    answer.push("0.094% (1 in )");
+    answer.push("0.014% (1 in )");
+  }
+  return answer;
+}
+
+function getDiagnosedSummary(ethnicity) {
   let answer = [];
   let stage = [];
   let tumorSize = [];
@@ -92,7 +206,7 @@ function getDiagnosedSummary(ethnicity) {  // Only for those who are diagnosed
   answer.push(erStatus);
   answer.push(subtype);
   return answer;
-} 
+}
 
 function checkAge(age) {
   if (Number.isInteger(age) && (age > 19)) {
@@ -108,6 +222,18 @@ function checkEthnicity(ethnicity) {
 
 function checkDiagnosed(diagnosed) {
   if ("Y/N".toLowerCase().includes(diagnosed.toLowerCase())) {
+    return true;
+  } return false;
+}
+
+function checkp_status(p_status) {
+  if ("Y/N".toLowerCase().includes(p_status.toLowerCase())) {
+    return true;
+  } return false;
+}
+
+function checkhighrisk(highrisk) {
+  if ("Y/N".toLowerCase().includes(highrisk.toLowerCase())) {
     return true;
   } return false;
 }
@@ -128,20 +254,34 @@ function printDiagnosedSummary(answer) {
   console.log('Subtype - HR+/HER2-: '+answer[4][0]
               +', HR+/HER2+: '+answer[4][1]+', HR-/HER2+: '+answer[4][2]
               +', HR-/HER2-: '+answer[4][3]+', Unknown: '+answer[4][4]);
-  console.log('-----------------------------------------------------');  
+  console.log('-----------------------------------------------------');
 }
 
-function main(age, ethnicity, diagnosed) {
-  if (diagnosed.toLowerCase().includes("Y".toLowerCase())) {   // the person is diagnosed
-    diagSum = getDiagnosedSummary(ethnicity);
-    printDiagnosedSummary(diagSum);
-  } else {  // when the patient is not diagnosed
-    // input p_status
-    // input high risk
+function main(age, ethnicity, diagnosed, highrisk, p_status) {
+  if (diagnosed.toLowerCase().includes("N".toLowerCase())) {
     ageProb = getProbabilityAge(age);
-    // print ageProb
-    // call & print ethnicity prob
-    // call & print recommendation function
+    while (true) {
+      console.log("Are you currently Pregnant, a new-born mom or planning to have kids in the near future (Y/N): ");
+      p_status = String(readline.question());
+      if (checkp_status(p_status)) break;
+      else {
+        console.log("Please put Y or N");
+      }
+    }
+    while (true) {
+      console.log("Do you have any family members who were/are diagnosed with breast cancer or are you at high risk for breast cancer according to your physician (Y/N): ");
+      highrisk = String(readline.question());
+      if (checkhighrisk(highrisk)) break;
+      else {
+        console.log("Please put Y or N");
+      }
+    }
+    console.log(getProbforeth(ethnicity));
+    getRecommendations(age, p_status, highrisk);
+  } else {  // when the patinet is diagnosed
+    diagSum = getDiagnosedSummary(ethnicity);
+    // console.log(diagSum);
+    printDiagnosedSummary(diagSum);
   }
 }
 
@@ -149,6 +289,9 @@ const readline = require("readline-sync");
 let age = 0;
 let ethnicity = "";
 let diagnosed = "";
+let p_status = "";
+let highrisk = "";
+
 while (true) {
   console.log("Input age: ");
   age = Number(readline.question());
@@ -157,6 +300,7 @@ while (true) {
     console.log("Please put valid age (x >= 20)");
   };
 }
+
 while (true) {
   console.log("Input Ethnicity (Choose between White/Black/Hispanic/Asian Pacific Islander/American Indian Alaska Native): ");
   ethnicity = String(readline.question());
@@ -165,6 +309,7 @@ while (true) {
     console.log("Please select between White/Black/Hispanic/Asian Pacific Islander/American Indian Alaska Native.");
   }
 }
+
 while (true) {
   console.log("Have you been diagnosed with breast cancer (Y/N): ");
   diagnosed = String(readline.question());
@@ -173,4 +318,7 @@ while (true) {
     console.log("Please put Y or N");
   }
 }
-main(age, ethnicity, diagnosed); // call main function
+
+
+
+main(age, ethnicity, diagnosed, p_status, highrisk); // call main function
