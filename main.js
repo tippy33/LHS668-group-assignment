@@ -25,9 +25,14 @@ function getProbabilityAge(age) {  // call only when they are NOT diagnosed
   return answer;
 }
 
+function printProbability(answer) {
+  console.log(answer[0]);
+  console.log(answer[1]);
+  console.log('-----------------------------------------------------');
+}
+
 function getRecommendations(age, p_status, highrisk) {
-  console.log("For an average woman your age, the probability for :");
-  console.log(getProbabilityAge(age));
+  // console.log("For an average woman your age, the probability for :"); // ??
   console.log("Following are the Recommendations to prevent Breast Cancer, given your age");
   if (age >= 20 && age < 30)
   {
@@ -144,20 +149,20 @@ function getRecommendations(age, p_status, highrisk) {
 function getProbforeth(ethnicity) {
   let answer = [];
   if (ethnicity.toLowerCase().includes("White".toLowerCase())) {
-    answer.push("0.13% ");
-    answer.push("0.02% (1 in )");
+    answer.push("Breast Cancer Incidence is 0.13%");
+    answer.push("Breast Cancer Mortality upon incidence is 0.02%");
   } else if (ethnicity.toLowerCase().includes("Black".toLowerCase())) {
-    answer.push("0.126% (1 in )");
-    answer.push("0.028% (1 in )");
+    answer.push("Breast Cancer Incidence is 0.126%");
+    answer.push("Breast Cancer Mortality upon incidence is 0.028%");
   } else if (ethnicity.toLowerCase().includes("Hispanic".toLowerCase())) {
-    answer.push("0.093% (1 in )");
-    answer.push("0.014% (1 in )");
+    answer.push("Breast Cancer Incidence is 0.093% (1 in )");
+    answer.push("Breast Cancer Mortality upon incidence is 0.014%");
   } else if (ethnicity.toLowerCase().includes("Asian Pacific Islander".toLowerCase())) {
-    answer.push("0.093% (1 in )");
-    answer.push("0.011% (1 in )");
+    answer.push("Breast Cancer Incidence is 0.093% (1 in )");
+    answer.push("Breast Cancer Mortality upon incidence is 0.011%");
   } else if (ethnicity.toLowerCase().includes("American Indian Alaska Native".toLowerCase())) {
-    answer.push("0.094% (1 in )");
-    answer.push("0.014% (1 in )");
+    answer.push("Breast Cancer Incidence is 0.094% (1 in )");
+    answer.push("Breast Cancer Mortality upon incidence is 0.014%");
   }
   return answer;
 }
@@ -259,7 +264,6 @@ function printDiagnosedSummary(answer) {
 
 function main(age, ethnicity, diagnosed, highrisk, p_status) {
   if (diagnosed.toLowerCase().includes("N".toLowerCase())) {
-    ageProb = getProbabilityAge(age);
     while (true) {
       console.log("Are you currently Pregnant, a new-born mom or planning to have kids in the near future (Y/N): ");
       p_status = String(readline.question());
@@ -276,15 +280,18 @@ function main(age, ethnicity, diagnosed, highrisk, p_status) {
         console.log("Please put Y or N");
       }
     }
-    console.log(getProbforeth(ethnicity));
+    console.log('*** Following is the probability of developing breast cancer and mortality upon incidence according to your age: ');
+    printProbability(getProbabilityAge(age));
+    console.log('*** Following is the probability of developing breast cancer and mortality upon incidence according to your ethnicity: ');
+    printProbability(getProbforeth(ethnicity));
     getRecommendations(age, p_status, highrisk);
   } else {  // when the patinet is diagnosed
     diagSum = getDiagnosedSummary(ethnicity);
-    // console.log(diagSum);
     printDiagnosedSummary(diagSum);
   }
 }
 
+const { func } = require("prop-types");
 const readline = require("readline-sync");
 let age = 0;
 let ethnicity = "";
@@ -318,7 +325,5 @@ while (true) {
     console.log("Please put Y or N");
   }
 }
-
-
 
 main(age, ethnicity, diagnosed, p_status, highrisk); // call main function
