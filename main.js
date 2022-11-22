@@ -30,7 +30,7 @@ function getProbabilityAge(age) {  // call only when they are NOT diagnosed
   return answer;
 }
 
-function getCancerScreen(age) {
+function getCancerScreen(age) {  // TODO: change into Recommendation
   console.log("*** Following is recommended cancer screening frequency according to your age.");
   if (age < 45) {
     console.log("Women should undergo regular screening mammography starting at age 45 years.");
@@ -48,7 +48,7 @@ function getCancerScreen(age) {
   return;
 }
 
-function getDiagnosedSummary(ethnicity) {
+function getDiagnosedSummary(ethnicity) {  // Only for those who are diagnosed
   let answer = [];
   let stage = [];
   let tumorSize = [];
@@ -132,13 +132,16 @@ function printDiagnosedSummary(answer) {
 }
 
 function main(age, ethnicity, diagnosed) {
-  if (diagnosed.toLowerCase().includes("Y".toLowerCase())) {
-    ageProb = getProbabilityAge(age);
-  } else {  // when the patinet is not diagnosed
+  if (diagnosed.toLowerCase().includes("Y".toLowerCase())) {   // the person is diagnosed
     diagSum = getDiagnosedSummary(ethnicity);
-    // console.log(diagSum);
     printDiagnosedSummary(diagSum);
-    getCancerScreen(age);
+  } else {  // when the patient is not diagnosed
+    // input p_status
+    // input high risk
+    ageProb = getProbabilityAge(age);
+    // print ageProb
+    // call & print ethnicity prob
+    // call & print recommendation function
   }
 }
 
